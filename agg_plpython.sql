@@ -19,7 +19,7 @@ CREATE OR REPLACE FUNCTION get_mad(value_array numeric[])
  $$
   import numpy as np
   arr = np.ma.array(value_array).compressed()
-  return np.mean(np.abs(arr - np.median(arr)))
+  return np.median(np.abs(arr - np.median(arr)))
 $$ LANGUAGE plpython3u;
 
 CREATE AGGREGATE agg_mad(numeric) (
